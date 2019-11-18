@@ -1,0 +1,155 @@
+{% load i18n %}
+{% load trionyx %}
+
+<body>
+    <table class="header" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="header-first border-bottom border-right">
+                <h1 class="logo-color">{% trans 'Invoice' %}</h1>
+
+                <div class="invoice-info">
+                    <span class="text-muted">#{{invoice.reference}}</span>
+                    <span class="text-muted send-date">{{ invoice.send_date|date:"SHORT_DATE_FORMAT" }}</span>
+                </div>
+
+                <hr class="hr-blue" />
+
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <td class="text-muted border-right">{% trans 'Total' %}:</td>
+                            <td class="text-muted">{% trans 'Due date' %}:</td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="text-bold border-right">{% price invoice.grand_total %}</td>
+                        <td class="text-bold">{{ invoice.due_date|date:"SHORT_DATE_FORMAT" }}</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="border-bottom">
+                <h2 class="brand-text-color">
+                    {{ company.name }}
+                </h2>
+                <span class="address text-light">
+                    {% for line in company.address_lines %}
+                        <span>{{line}}</span>
+                    {% endfor %}
+                    {% if company.telephone %}
+                        <span>{{company.telephone}}</span>
+                    {% endif %}
+
+                    {% if company.website %}
+                        <span>{{company.website}}</span>
+                    {% endif %}
+                    {% if company.email %}
+                        <span>{{company.email}}</span>
+                    {% endif %}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="border-right text-light">
+                {{ payment_instructions|safe }}
+                {% if invoice.comment %}
+                    <hr>
+                    {{ invoice.comment|safe }}
+                {% endif %}
+            </td>
+            <td>
+                <h6 class="text-muted">{% trans 'Bill to' %}:</h6>
+                <span class="address text-light">
+                    {% for line in invoice.address_lines %}
+                        {% if forloop.first %}
+                            <span class="text-bold">{{line}}</span>
+                        {% else %}
+                            <span>{{line}}</span>
+                        {% endif %}
+                    {% endfor %}
+                    {% if invoice.billing_email %}
+                        <span>{{invoice.billing_email}}</span>
+                    {% endif %}
+                </span>
+            </td>
+        </tr>
+    </table>
+
+    {% if hourly_items %}
+        <table class="items" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>{% trans 'Description' %}</th>
+                    <th style="width: 90px">{% trans 'Hourly rate' %}</th>
+                    <th style="width: 90px">{% trans 'Hours' %}</th>
+                    <th style="width: 90px">{% trans 'Linetotal' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in hourly_items %}
+                    <tr>
+                        <td>{{ item.description }}</td>
+                        <td class="right">{% price item.hourly_rate %}</td>
+                        <td class="right">{{ item.hours }}</td>
+                        <td class="right">{% price item.row_total %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if price_items %}
+        <table class="items" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>{% trans 'Item' %}</th>
+                    <th style="width: 90px">{% trans 'Price' %}</th>
+                    <th style="width: 90px">{% trans 'Quantity' %}</th>
+                    <th style="width: 90px">{% trans 'Linetotal' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in price_items %}
+                    <tr>
+                        <td>{{ item.description }}</td>
+                        <td class="right">{% price item.price %}</td>
+                        <td class="right">{{ item.qty }}</td>
+                        <td class="right">{% price item.row_total %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+
+
+    <table class="totals" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="border-bottom"></td>
+            <td style="width: 160px" class="text-muted text-bold left border-bottom">{% trans 'Subtotal' %}:</td>
+            <td style="width: 120px" class="border-bottom right text-muted text-bold">{% price invoice.subtotal %}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-muted text-bold left">{% trans 'Tax' %} ({{ invoice.tax_percentage }}%):</td>
+            <td class="right text-muted text-bold">{% price invoice.tax_total %}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-bold left">{% trans 'Total amount' %}:</td>
+            <td class="right text-bold">{% price invoice.subtotal_incl_tax %}</td>
+        </tr>
+        <tr>
+            <td class="totals-border"></td>
+            <td class="totals-border text-muted text-bold left">{% trans 'Discount' %}:</td>
+            <td class="totals-border right text-muted text-bold">{% price invoice.negative_discount %}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="due-amount-border text-bold left">{% trans 'Amount due' %}:</td>
+            <td class="due-amount-border right text-bold">{% price invoice.grand_total %}</td>
+        </tr>
+    </table>
+</body>
+<footer>
+    {{ footer }}
+</footer>
