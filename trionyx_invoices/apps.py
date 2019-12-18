@@ -60,6 +60,7 @@ class InvoicesConfig(BaseConfig):
         ]
 
         display_delete_button = False
+        display_change_button = False
 
         header_buttons = [
             {
