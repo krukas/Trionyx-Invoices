@@ -1,0 +1,23 @@
+{% load i18n trionyx %}
+{% trans "Dear" %}
+    {% if invoice.billing_name %}
+        {{ invoice.billing_name }}
+    {% else %}
+        {{ invoice.billing_company_name }}
+    {% endif %},<br/>
+<br />
+
+{% blocktrans with reference=invoice.reference %}
+    We are contacting you in regard to a new invoice #{{ reference }} that has been created on your account
+{% endblocktrans %}.
+{% blocktrans with due_date=invoice.due_date|date:"SHORT_DATE_FORMAT" grand_total=invoice.grand_total|price %}
+    You may find the invoice attached. Please pay the balance of {{ grand_total }} by {{ due_date }}
+{% endblocktrans %}.
+<br />
+{{ payment_instructions }}<br/>
+<br/>
+{% trans "We look forward to conducting future business with you" %}.<br />
+<br />
+{% trans "Kind Regards" %},<br />
+<br />
+{{ company_name }}

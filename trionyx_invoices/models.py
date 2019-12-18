@@ -4,11 +4,14 @@ from decimal import Decimal
 from trionyx import models
 from trionyx.data import COUNTRIES
 from trionyx.config import variables
+from trionyx.utils import get_current_request
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.contenttypes import fields
 from django.core.files.base import ContentFile
 from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from weasyprint import HTML, CSS
 
@@ -200,7 +203,48 @@ class Invoice(models.BaseModel):
             ))
         )
 
-    def save(self, *args, **kwargs):
+    def send(self):
+        subject = app_settings.INVOICE_EMAIL_SUBJECT.format(invoice_id=self.reference)
+        if self._send_email(subject, 'invoices/emails/invoice.html') and not self.send_date:
+            self.send_date = timezone.now()
+            self.save()
+
+    def send_reminder(self):
+        subject = app_settings.INVOICE_EMAIL_REMINDER_SUBJECT.format(invoice_id=self.reference)
+        if self._send_email(subject, 'invoices/emails/invoice_reminder.html') and not self.send_reminder_date:
+            self.send_reminder_date = timezone.now()
+            self.save()
+
+    def send_past_due(self):
+        subject = app_settings.INVOICE_EMAIL_PAST_DUE_SUBJECT.format(invoice_id=self.reference)
+        if self._send_email(subject, 'invoices/emails/invoice_past_due.html') and not self.send_past_due_date:
+            self.send_past_due_date = timezone.now()
+            self.save()
+
+    def _send_email(self, subject, template_file):
+        if not self.billing_email:
+            return False
+
+        message = EmailMultiAlternatives(
+            subject=subject,
+            body='',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[self.billing_email]
+        )
+
+        message.attach_alternative(
+            render_to_string(template_file, {
+                'invoice': self,
+                'payment_instructions': app_settings.PAYMENT_INSTRUCTIONS,
+                'company_name': settings.TX_COMPANY_NAME,
+            }),
+            "text/html")
+
+        message.attach(self.pdf.name, self.pdf.read())
+
+        return message.send()
+
+    def clean(self):
         # Check if valid status update
         if self.__original_status != self.status and self.status not in self.STATUS_FLOWS[self.__original_status]:
             raise ValidationError('Invalid status change, valid statuses are {}'.format(
@@ -209,6 +253,14 @@ class Invoice(models.BaseModel):
 
         if self.status != self.STATUS_DRAFT and self.items.count() == 0:
             raise ValidationError("Cant't publish a invoice without items")
+
+        if self.status != self.STATUS_DRAFT and not any(
+                [self.billing_company_name, self.billing_name, self.billing_email, self.billing_address]
+        ):
+            raise ValidationError("Can't publish a invoice without any billing information")
+
+    def save(self, *args, **kwargs):
+        self.clean()
 
         if self.__original_status == self.STATUS_DRAFT:
             self.collect_totals()
@@ -223,16 +275,23 @@ class Invoice(models.BaseModel):
         else:
             super().save(*args, **kwargs)
 
+        if self.__original_status == self.STATUS_DRAFT and self.status == self.STATUS_SEND:
+            from .tasks import InvoicePublishTask
+            InvoicePublishTask().delay(
+                task_object=self,
+                task_description=_(f'Publishing invoice #{self.reference}')
+            )
+
 
     def get_absolute_url(self):
         """Get absolute url, in Draft returns edit form"""
         if self.status == self.STATUS_DRAFT:
             from trionyx.urls import model_url
-            return model_url(self, 'edit')
+            url = model_url(self, 'edit')
+            if get_current_request().path == url:
+                return model_url(self, 'list')
+            return url
         return super().get_absolute_url()
-
-    # Need to add signal hook to disable edit/delete after invoice is published
-    # - Add signals for disable_(add/edit/delete)
 
 
 class InvoiceItem(models.BaseModel):

@@ -7,15 +7,18 @@ trionyx_invoices.forms
 """
 from trionyx import forms
 from trionyx.forms.helper import FormHelper
-from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm
+from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm, Field
 from django.forms.models import inlineformset_factory
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Invoice, InvoiceItem
+from .conf import settings
 
 
 class InvoiceItemPriceForm(forms.ModelForm):
     description = forms.CharField()
+    qty = forms.IntegerField(initial=1)
 
     def __init__(self, *args, **kwargs):
         """Init user form"""
@@ -42,6 +45,8 @@ InvoiceItemPriceFormSet = inlineformset_factory(
 
 class InvoiceItemHourlyForm(forms.ModelForm):
     description = forms.CharField()
+    hourly_rate = forms.DecimalField(initial=settings.HOURLY_PRICE)
+    hours = forms.DecimalField(initial=1)
 
     def __init__(self, *args, **kwargs):
         """Init user form"""
@@ -158,5 +163,43 @@ class InvoiceForm(forms.ModelForm):
                 ),
                 css_class='row'
             ),
-
         )
+
+
+@forms.register(code='publish')
+class PublishInvoice(forms. ModelForm):
+    """Publish invoice form"""
+
+    days = forms.IntegerField(label=_('Invoice due in days'), required=True, initial=30)
+    status = forms.CharField(widget=forms.HiddenInput(), required=False)
+    due_date = forms.DateTimeField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        """Form meta"""
+
+        model = Invoice
+        fields = ['days', 'due_date', 'status']
+
+    def __init__(self, *args, **kwargs):
+        """Init form"""
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            'days',
+            Field('status', hidden=True),
+            Field('due_date', hidden=True)
+        )
+
+    def clean_due_date(self):
+        return timezone.now() + timezone.timedelta(days=self.cleaned_data['days'])
+
+    def clean_status(self):
+        return Invoice.STATUS_SEND
+
+    def get_title(self):
+        """Get title"""
+        return _('Publish and send invoice to customer')
+
+    def get_submit_label(self):
+        """Get submit label"""
+        return _('Publish')

@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tr>
-                        <td class="text-bold border-right">{% price invoice.grand_total %}</td>
+                        <td class="text-bold border-right">{{ invoice.grand_total|price }}</td>
                         <td class="text-bold">{{ invoice.due_date|date:"SHORT_DATE_FORMAT" }}</td>
                     </tr>
                 </table>
@@ -88,9 +88,9 @@
                 {% for item in hourly_items %}
                     <tr>
                         <td>{{ item.description }}</td>
-                        <td class="right">{% price item.hourly_rate %}</td>
+                        <td class="right">{{ item.hourly_rate|price }}</td>
                         <td class="right">{{ item.hours }}</td>
-                        <td class="right">{% price item.row_total %}</td>
+                        <td class="right">{{ item.row_total|price }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -111,9 +111,9 @@
                 {% for item in price_items %}
                     <tr>
                         <td>{{ item.description }}</td>
-                        <td class="right">{% price item.price %}</td>
+                        <td class="right">{{ item.price|price }}</td>
                         <td class="right">{{ item.qty }}</td>
-                        <td class="right">{% price item.row_total %}</td>
+                        <td class="right">{{ item.row_total|price }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -126,27 +126,27 @@
         <tr>
             <td class="border-bottom"></td>
             <td style="width: 160px" class="text-muted text-bold left border-bottom">{% trans 'Subtotal' %}:</td>
-            <td style="width: 120px" class="border-bottom right text-muted text-bold">{% price invoice.subtotal %}</td>
+            <td style="width: 120px" class="border-bottom right text-muted text-bold">{{ invoice.subtotal|price }}</td>
         </tr>
         <tr>
             <td></td>
             <td class="text-muted text-bold left">{% trans 'Tax' %} ({{ invoice.tax_percentage }}%):</td>
-            <td class="right text-muted text-bold">{% price invoice.tax_total %}</td>
+            <td class="right text-muted text-bold">{{ invoice.tax_total|price }}</td>
         </tr>
         <tr>
             <td></td>
             <td class="text-bold left">{% trans 'Total amount' %}:</td>
-            <td class="right text-bold">{% price invoice.subtotal_incl_tax %}</td>
+            <td class="right text-bold">{{ invoice.subtotal_incl_tax|price }}</td>
         </tr>
         <tr>
             <td class="totals-border"></td>
             <td class="totals-border text-muted text-bold left">{% trans 'Discount' %}:</td>
-            <td class="totals-border right text-muted text-bold">{% price invoice.negative_discount %}</td>
+            <td class="totals-border right text-muted text-bold">{{ invoice.negative_discount|price }}</td>
         </tr>
         <tr>
             <td></td>
             <td class="due-amount-border text-bold left">{% trans 'Amount due' %}:</td>
-            <td class="due-amount-border right text-bold">{% price invoice.grand_total %}</td>
+            <td class="due-amount-border right text-bold">{{ invoice.grand_total|price }}</td>
         </tr>
     </table>
 </body>

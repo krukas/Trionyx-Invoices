@@ -10,7 +10,7 @@ def readme():
 
 setup(
     name = 'trionyx-invoices',
-    packages = find_packages(),
+    packages = find_packages(include=['trionyx_invoices', 'trionyx_invoices.*']),
     include_package_data=True,
     version = __version__,
     description = 'Trionyx app for invoices',

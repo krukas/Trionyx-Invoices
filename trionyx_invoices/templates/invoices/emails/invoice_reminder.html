@@ -1,0 +1,22 @@
+{% load i18n trionyx %}
+{% trans "Dear" %}
+    {% if invoice.billing_name %}
+        {{ invoice.billing_name }}
+    {% else %}
+        {{ invoice.billing_company_name }}
+    {% endif %},<br/>
+<br />
+{% blocktrans with reference=invoice.reference %}
+    We are contacting you in regard to invoice #{{ reference }} that is currently outstanding
+{% endblocktrans %}.
+{% blocktrans with due_date=invoice.due_date|date:"SHORT_DATE_FORMAT" grand_total=invoice.grand_total|price %}
+    This is a friendly reminder that the balance of {{ grand_total }} by {{ due_date }}
+{% endblocktrans %}.
+<br />
+{{ payment_instructions }}<br/>
+<br/>
+{% trans "If the invoice has already been paid, please disregard this message. We greatly appreciate your business" %}.<br />
+<br />
+{% trans "Kind Regards" %},<br />
+<br />
+{{ company_name }}

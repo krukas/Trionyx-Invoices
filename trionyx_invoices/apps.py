@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 def render_status(model, *args, **kwargs):
     """Render status as label"""
     mapping = {
-        10: 'info',
+        10: 'default',
         20: 'info',
         30: 'warning',
         40: 'success',
@@ -21,9 +21,16 @@ def render_status(model, *args, **kwargs):
     }
 
     return '<span class="label label-{}">{}</span>'.format(
-        mapping.get(model.status, 'secondary'),
+        mapping.get(model.status, 'default'),
         model.get_status_display()
     )
+
+
+def get_publish_url(obj, context):
+    """Get publish url"""
+    from trionyx.urls import model_url
+    return model_url(obj, 'dialog-edit-custom', code='publish')
+
 
 class InvoicesConfig(BaseConfig):
     """Django core config app"""
@@ -52,16 +59,28 @@ class InvoicesConfig(BaseConfig):
             }
         ]
 
-        edit_header_buttons = [
+        display_delete_button = False
+
+        header_buttons = [
             {
                 'label': _('Delete'),
-                'url': 'trionyx:model-delete',
-                'dialog': False,
+                'url': 'trionyx:model-dialog-delete',
+                'dialog': True,
+                'show': lambda obj, context: obj and obj.status == 10,
+                'dialog_options': {
+                    'callback': """function(data, dialog){
+                        if (data.success) {
+                            dialog.close();   
+                            window.location.href = '/model/trionyx_invoices/invoice/';
+                        }
+                    }"""
+                }
             },
             {
                 'label': _('Publish'),
-                'url': 'trionyx:model-dialog-edit', #TODO: use publish view
+                'url': get_publish_url,
                 'type': 'btn-info',
+                'show': lambda obj, context: obj and obj.pk and obj.status == 10 and obj.items.count(),
                 'dialog_options': {
                     'callback': """function(data, dialog){
                         if (data.success) {
