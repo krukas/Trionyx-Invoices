@@ -32,6 +32,12 @@ def get_publish_url(obj, context):
     return model_url(obj, 'dialog-edit-custom', code='publish')
 
 
+def get_complete_url(obj, context):
+    """Get publish url"""
+    from trionyx.urls import model_url
+    return model_url(obj, 'dialog-edit-custom', code='complete')
+
+
 class InvoicesConfig(BaseConfig):
     """Django core config app"""
 
@@ -87,6 +93,27 @@ class InvoicesConfig(BaseConfig):
                         if (data.success) {
                             // TODO: Redirect to view
                             dialog.close();   
+                        }
+                    }"""
+                }
+            },
+            {
+                'label': _('PDF'),
+                'url': lambda obj, context: obj.pdf.url if obj.pdf else '',
+                'show': lambda obj, context: obj and obj.pk and obj.status in [20, 30, 40] and context.get('tab') == 'general',
+                'dialog': False,
+                'target': '_blank',
+            },
+            {
+                'label': _('Complete'),
+                'url': get_complete_url,
+                'type': 'btn-success',
+                'show': lambda obj, context: obj and obj.pk and obj.status in [20, 30] and context.get('tab') == 'general',
+                'dialog_options': {
+                    'callback': """function(data, dialog){
+                        if (data.success) {
+                            trionyx_reload_tab('general');
+                            dialog.close();
                         }
                     }"""
                 }

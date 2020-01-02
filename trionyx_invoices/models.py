@@ -96,14 +96,14 @@ class Invoice(models.BaseModel):
     comment = models.TextField(_('Comment'), null=True, blank=True)
 
     # Billing information
-    billing_name = models.CharField(_('Billing name'), max_length=128, null=True, blank=True)
-    billing_company_name = models.CharField(_('Billing company name'), max_length=128, null=True, blank=True)
-    billing_email = models.EmailField(_('Billing email'), null=True, blank=True)
-    billing_telephone = models.CharField(_('Billing telephone'), max_length=32, null=True, blank=True)
-    billing_address = models.CharField(_('Billing address'), max_length=128, null=True, blank=True)
-    billing_postcode = models.CharField(_('Billing postcode'), max_length=16, null=True, blank=True)
-    billing_city = models.CharField(_('Billing city'), max_length=256, null=True, blank=True)
-    billing_country = models.CharField(_('Billing country'), max_length=2, choices=COUNTRIES, blank=True, null=True)
+    billing_name = models.CharField(_('Name'), max_length=128, null=True, blank=True)
+    billing_company_name = models.CharField(_('Company name'), max_length=128, null=True, blank=True)
+    billing_email = models.EmailField(_('Email'), null=True, blank=True)
+    billing_telephone = models.CharField(_('Telephone'), max_length=32, null=True, blank=True)
+    billing_address = models.CharField(_('Address'), max_length=128, null=True, blank=True)
+    billing_postcode = models.CharField(_('Postcode'), max_length=16, null=True, blank=True)
+    billing_city = models.CharField(_('City'), max_length=256, null=True, blank=True)
+    billing_country = models.CharField(_('Country'), max_length=2, choices=COUNTRIES, blank=True, null=True)
 
     class Meta:
         """Model meta"""

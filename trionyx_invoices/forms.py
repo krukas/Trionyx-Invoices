@@ -7,7 +7,7 @@ trionyx_invoices.forms
 """
 from trionyx import forms
 from trionyx.forms.helper import FormHelper
-from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm, Field
+from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm, Field, HTML
 from django.forms.models import inlineformset_factory
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -167,7 +167,7 @@ class InvoiceForm(forms.ModelForm):
 
 
 @forms.register(code='publish')
-class PublishInvoice(forms. ModelForm):
+class PublishInvoice(forms.ModelForm):
     """Publish invoice form"""
 
     days = forms.IntegerField(label=_('Invoice due in days'), required=True, initial=30)
@@ -203,3 +203,36 @@ class PublishInvoice(forms. ModelForm):
     def get_submit_label(self):
         """Get submit label"""
         return _('Publish')
+
+
+@forms.register(code='complete')
+class CompleteInvoice(forms.ModelForm):
+    """Paid invoice form"""
+
+    status = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        """Form meta"""
+
+        model = Invoice
+        fields = ['status']
+
+    def __init__(self, *args, **kwargs):
+        """Init form"""
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Field('status', hidden=True),
+            HTML(_('Mark invoice as paid')),
+        )
+
+    def clean_status(self):
+        return Invoice.STATUS_PAID
+
+    def get_title(self):
+        """Get title"""
+        return _('Complete invoice')
+
+    def get_submit_label(self):
+        """Get submit label"""
+        return _('Completed')
