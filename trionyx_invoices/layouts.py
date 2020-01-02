@@ -6,8 +6,9 @@ trionyx_invoices.layouts
 :license: GPLv3
 """
 from trionyx.views import tabs
-from trionyx.layout import Container, Row, Column8, Column4, Panel, DescriptionList, Html, Table, Link
+from trionyx.layout import Container, Row, Column12, Column8, Column4, Panel, DescriptionList, Html, Table, Link
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.models import ContentType
 
 from .models import Invoice, InvoiceItem
 
@@ -98,6 +99,33 @@ def invoice_general(obj):
                     Html(obj.comment),
                     collapse = False
                 ),
+            )
+        )
+    )
+
+@tabs.register('trionyx_accounts.account', code='invoices', order=20)
+def account_invoices(obj):
+    from .apps import render_status
+    return Column12(
+        Panel(
+            _('Invoices'),
+            Table(
+                Invoice.objects.filter(
+                    for_object_id=obj.id, for_object_type=ContentType.objects.get_for_model(obj)
+                ).order_by('-created_at'),
+                'created_at=width:150px',
+                'due_date=width:80px',
+                {
+                    'field': 'status',
+                    'renderer': lambda value, data_object, **options: render_status(data_object),
+                    'width': '80px',
+                },
+                {
+                    'label': _('Reference'),
+                    'value': Link(),
+                    'width': '80px',
+                },
+                'grand_total'
             )
         )
     )

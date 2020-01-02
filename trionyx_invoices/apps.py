@@ -91,7 +91,7 @@ class InvoicesConfig(BaseConfig):
                 'dialog_options': {
                     'callback': """function(data, dialog){
                         if (data.success) {
-                            // TODO: Redirect to view
+                            window.location.href = String(dialog.url).replace(/^\/dialog|edit\/publish\/$/g, '');
                             dialog.close();   
                         }
                     }"""

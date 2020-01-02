@@ -7,7 +7,8 @@ trionyx_invoices.forms
 """
 from trionyx import forms
 from trionyx.forms.helper import FormHelper
-from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm, Field, HTML
+from trionyx.forms.layout import Layout, Fieldset, Div, InlineForm, Field, HTML, Depend
+from django.apps import apps
 from django.forms.models import inlineformset_factory
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -99,51 +100,74 @@ class InvoiceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """Init form"""
         super().__init__(*args, **kwargs)
+
+        billing_row = Div(
+            Fieldset(
+                _('Invoiced to'),
+                Div(
+                    'billing_company_name',
+                    css_class='col-md-6'
+                ),
+                Div(
+                    'billing_name',
+                    css_class='col-md-6'
+                ),
+                Div(
+                    'billing_email',
+                    css_class='col-md-6'
+                ),
+                Div(
+                    'billing_telephone',
+                    css_class='col-md-6'
+                ),
+                css_class='col-md-6'
+            ),
+            Fieldset(
+                _('Billing address'),
+                Div(
+                    'billing_address',
+                    css_class='col-md-12'
+                ),
+                Div(
+                    'billing_postcode',
+                    css_class='col-md-2'
+                ),
+                Div(
+                    'billing_city',
+                    css_class='col-md-6'
+                ),
+                Div(
+                    'billing_country',
+                    css_class='col-md-4'
+                ),
+                css_class='col-md-6'
+            ),
+            css_class='row',
+        )
+
+        if apps.is_installed("trionyx_accounts") and not self.instance.id:
+            from trionyx_accounts.models import Account
+            self.fields['account'] = forms.ChoiceField(
+                label=_('Account'),
+                choices=[
+                    ('', '-----'),
+                    ('__custom__', _('Custom')),
+                    *Account.objects.values_list('id', 'verbose_name')
+                ],
+                required=True,
+                initial=self.instance.for_object_id,
+            )
+            billing_row = Div(
+                'account',
+                Depend(
+                    [('account', r'__custom__')],
+                    billing_row,
+                )
+            )
+
         self.helper = FormHelper()
         self.helper.layout = Layout(
-            Div(
-                Fieldset(
-                    _('Invoiced to'),
-                    Div(
-                        'billing_company_name',
-                        css_class='col-md-6'
-                    ),
-                    Div(
-                        'billing_name',
-                        css_class='col-md-6'
-                    ),
-                    Div(
-                        'billing_email',
-                        css_class='col-md-6'
-                    ),
-                    Div(
-                        'billing_telephone',
-                        css_class='col-md-6'
-                    ),
-                    css_class='col-md-6'
-                ),
-                Fieldset(
-                    _('Billing address'),
-                    Div(
-                        'billing_address',
-                        css_class='col-md-12'
-                    ),
-                    Div(
-                        'billing_postcode',
-                        css_class='col-md-2'
-                    ),
-                    Div(
-                        'billing_city',
-                        css_class='col-md-6'
-                    ),
-                    Div(
-                        'billing_country',
-                        css_class='col-md-4'
-                    ),
-                    css_class='col-md-6'
-                ),
-                css_class='row',
-            ),
+            billing_row,
             Div(
                 Div(
                     Fieldset(
@@ -164,6 +188,28 @@ class InvoiceForm(forms.ModelForm):
                 css_class='row'
             ),
         )
+
+    def save(self, commit=True):
+        is_new = not self.instance.id
+        invoice = super().save(commit)
+
+        if is_new and apps.is_installed("trionyx_accounts") and self.cleaned_data['account'] != '__custom__':
+            from trionyx_accounts.models import Account
+            account = Account.objects.get(id=self.cleaned_data['account'])
+            invoice.for_object = account
+            invoice.billing_company_name = account.name
+            invoice.billing_email = account.email
+            invoice.billing_telephone = account.phone
+
+            if account.billing_address:
+                invoice.billing_address = account.billing_address.street
+                invoice.billing_city = account.billing_address.city
+                invoice.billing_postcode = account.billing_address.postcode
+                invoice.billing_country = account.billing_address.country
+
+            invoice.save()
+
+        return invoice
 
 
 @forms.register(code='publish')
