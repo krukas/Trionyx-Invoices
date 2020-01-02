@@ -47,6 +47,7 @@ class InvoicesConfig(BaseConfig):
     class Invoice(ModelConfig):
         menu_root = True
         menu_icon = 'fa fa-money'
+        menu_order = 80
         verbose_name = '{reference}'
 
         list_default_fields = [

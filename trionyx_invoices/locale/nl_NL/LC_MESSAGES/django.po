@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FULL NAME <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-02 19:33+0000\n"
+"PO-Revision-Date: 2020-01-02 21:01+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:111
+#: trionyx_invoices/models.py:112
+msgid "Invoices"
+msgstr "Facturen"
+
+#: trionyx_invoices/apps.py:73
+msgid "Delete"
+msgstr "Verwijder"
+
+#: trionyx_invoices/apps.py:87 trionyx_invoices/forms.py:251
+msgid "Publish"
+msgstr "Publiceren"
+
+#: trionyx_invoices/apps.py:101
+msgid "PDF"
+msgstr "PDF"
+
+#: trionyx_invoices/apps.py:108
+msgid "Complete"
+msgstr "Voltooi"
+
+#: trionyx_invoices/conf.py:13 trionyx_invoices/conf.py:14
+#, python-brace-format
+msgid "Invoice {invoice_id}"
+msgstr "Factuur {invoice_id}"
+
+#: trionyx_invoices/conf.py:15
+#, python-brace-format
+msgid "Invoice {invoice_id} is past due"
+msgstr "Factuur {invoice_id} is te laat"
+
+#: trionyx_invoices/forms.py:106 trionyx_invoices/layouts.py:43
+msgid "Invoiced to"
+msgstr "Gefactureerd aan"
+
+#: trionyx_invoices/forms.py:126 trionyx_invoices/layouts.py:54
+msgid "Billing address"
+msgstr "Factuur adres"
+
+#: trionyx_invoices/forms.py:151
+msgid "Account"
+msgstr "Account"
+
+#: trionyx_invoices/forms.py:154
+msgid "Custom"
+msgstr "Met de hand"
+
+#: trionyx_invoices/forms.py:174 trionyx_invoices/layouts.py:67
+msgid "Hourly items"
+msgstr "Uur items"
+
+#: trionyx_invoices/forms.py:178 trionyx_invoices/layouts.py:77
+msgid "Price items"
+msgstr "Prijs items"
+
+#: trionyx_invoices/forms.py:219
+msgid "Invoice due in days"
+msgstr "Factuur verschuldigd in dagen"
+
+#: trionyx_invoices/forms.py:247
+msgid "Publish and send invoice to customer"
+msgstr "Publiceer en verzend factuur naar klant"
+
+#: trionyx_invoices/forms.py:272
+msgid "Mark invoice as paid"
+msgstr "Markeer factuur als betaald"
+
+#: trionyx_invoices/forms.py:280
+msgid "Complete invoice"
+msgstr "Factuur voltooien"
+
+#: trionyx_invoices/forms.py:284
+msgid "Completed"
+msgstr "Voltooid"
+
+#: trionyx_invoices/layouts.py:25
+msgid "Info"
+msgstr "Info"
+
+#: trionyx_invoices/layouts.py:33
+msgid "For"
+msgstr "Voor"
+
+#: trionyx_invoices/layouts.py:89
+msgid "Totals"
+msgstr "Totalen"
+
+#: trionyx_invoices/layouts.py:98 trionyx_invoices/models.py:96
+#: trionyx_invoices/models.py:359 trionyx_invoices/models.py:364
+msgid "Comment"
+msgstr "Opmerking"
+
+#: trionyx_invoices/layouts.py:124 trionyx_invoices/models.py:81
+#: trionyx_invoices/models.py:312
+#: trionyx_invoices/templates/widgets/open_invoices.html:13
+msgid "Reference"
+msgstr "Referentie"
+
+#: trionyx_invoices/models.py:37
+msgid "Invoice type"
+msgstr "Factuurtype"
+
+#: trionyx_invoices/models.py:38
+msgid "Invoice types"
+msgstr "Typen facturen"
+
+#: trionyx_invoices/models.py:49
+msgid "Draft"
+msgstr "Ontwerp"
+
+#: trionyx_invoices/models.py:50
+msgid "Send"
+msgstr "Verzonden"
+
+#: trionyx_invoices/models.py:51
+msgid "Overdue"
+msgstr "Achterstallig"
+
+#: trionyx_invoices/models.py:52
+msgid "Paid"
+msgstr "Betaald"
+
+#: trionyx_invoices/models.py:53
+msgid "Canceled"
+msgstr "Geannuleerd"
+
+#: trionyx_invoices/models.py:64 trionyx_invoices/models.py:307
+msgid "Type"
+msgstr "Type"
+
+#: trionyx_invoices/models.py:72
+msgid "Object type"
+msgstr "Object type"
+
+#: trionyx_invoices/models.py:74
+msgid "Object ID"
+msgstr "Object ID"
+
+#: trionyx_invoices/models.py:80
+#: trionyx_invoices/templates/widgets/open_invoices.html:14
+msgid "Status"
+msgstr "Staat"
+
+#: trionyx_invoices/models.py:82
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:21
+#: trionyx_invoices/templates/widgets/open_invoices.html:12
+msgid "Due date"
+msgstr "Opleveringsdatum"
+
+#: trionyx_invoices/models.py:84
+msgid "Send on"
+msgstr "Verzonden op"
+
+#: trionyx_invoices/models.py:85
+msgid "Reminder send on"
+msgstr "Herinnering verzonden op"
+
+#: trionyx_invoices/models.py:86
+msgid "Past due send on"
+msgstr "Achterstallig verzenden op"
+
+#: trionyx_invoices/models.py:88
+msgid "Discount total"
+msgstr "Totaal korting"
+
+#: trionyx_invoices/models.py:89
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:128
+msgid "Subtotal"
+msgstr "Subtotaal"
+
+#: trionyx_invoices/models.py:90
+msgid "Tax percentage"
+msgstr "Belastingpercentage"
+
+#: trionyx_invoices/models.py:91
+msgid "Tax total"
+msgstr "Totaal belasting"
+
+#: trionyx_invoices/models.py:92
+#: trionyx_invoices/templates/widgets/open_invoices.html:15
+msgid "Grand total"
+msgstr "Eindtotaal"
+
+#: trionyx_invoices/models.py:99
+#: trionyx_invoices/templates/widgets/open_invoices.html:16
+msgid "Name"
+msgstr "Naam"
+
+#: trionyx_invoices/models.py:100
+msgid "Company name"
+msgstr "Bedrijfsnaam"
+
+#: trionyx_invoices/models.py:101
+msgid "Email"
+msgstr "Email"
+
+#: trionyx_invoices/models.py:102
+msgid "Telephone"
+msgstr "Telefoon"
+
+#: trionyx_invoices/models.py:103
+msgid "Address"
+msgstr "Adres"
+
+#: trionyx_invoices/models.py:104
+msgid "Postcode"
+msgstr "Postcode"
+
+#: trionyx_invoices/models.py:105
+msgid "City"
+msgstr "Stad"
+
+#: trionyx_invoices/models.py:106
+msgid "Country"
+msgstr "Land"
+
+#: trionyx_invoices/models.py:111 trionyx_invoices/models.py:306
+#: trionyx_invoices/models.py:356
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:8
+msgid "Invoice"
+msgstr "Factuur"
+
+#: trionyx_invoices/models.py:282
+#, python-brace-format
+msgid "Publishing invoice #{self.reference}"
+msgstr "Publicatie factuur #{self.reference}"
+
+#: trionyx_invoices/models.py:302 trionyx_invoices/models.py:316
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:82
+msgid "Hourly rate"
+msgstr "Uurtarief"
+
+#: trionyx_invoices/models.py:303 trionyx_invoices/models.py:319
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:105
+msgid "Price"
+msgstr "Prijs"
+
+#: trionyx_invoices/models.py:313
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:81
+msgid "Description"
+msgstr "Beschrijving"
+
+#: trionyx_invoices/models.py:314
+msgid "Order"
+msgstr "Volgorde"
+
+#: trionyx_invoices/models.py:317
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:83
+msgid "Hours"
+msgstr "Uren"
+
+#: trionyx_invoices/models.py:320
+msgid "Qty"
+msgstr "Aantal"
+
+#: trionyx_invoices/models.py:322
+msgid "Row total"
+msgstr "Rij totaal"
+
+#: trionyx_invoices/models.py:327
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:104
+msgid "Item"
+msgstr "Item"
+
+#: trionyx_invoices/models.py:328
+msgid "Items"
+msgstr "Items"
+
+#: trionyx_invoices/models.py:357
+msgid "Is public"
+msgstr "Is openbaar"
+
+#: trionyx_invoices/models.py:358
+msgid "Is send"
+msgstr "Is verzonden"
+
+#: trionyx_invoices/models.py:365
+msgid "Comments"
+msgstr "Opmerkingen"
+
+#: trionyx_invoices/tasks.py:20
+msgid "Creating invoice PDF"
+msgstr "Factuur PDF maken"
+
+#: trionyx_invoices/tasks.py:24
+msgid "Sending invoice"
+msgstr "Verzenden factuur"
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:2
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:2
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:2
+msgid "Dear"
+msgstr "Geachte"
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:10
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to a new invoice #%(reference)s that has "
+"been created on your account\n"
+msgstr ""
+"\n"
+"We nemen contact met u op met betrekking tot een nieuwe factuur #"
+"%(reference)s die is aangemaakt op uw account\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:13
+#, python-format
+msgid ""
+"\n"
+"    You may find the invoice attached. Please pay the balance of "
+"%(grand_total)s by %(due_date)s\n"
+msgstr ""
+"\n"
+"U vindt de factuur als bijlage. Betaal het saldo van %(grand_total)s voor "
+"%(due_date)s\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:19
+msgid "We look forward to conducting future business with you"
+msgstr "We kijken ernaar uit om in de toekomst zaken met u te doen"
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:21
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:21
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:20
+msgid "Kind Regards"
+msgstr "Met vriendelijke groeten"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:9
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to invoice #%(reference)s\n"
+msgstr ""
+"\n"
+"We nemen contact met u op met betrekking tot factuur #%(reference)s\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:12
+#, python-format
+msgid ""
+"\n"
+"    The invoice is now past due since %(due_date)s with a balance of "
+"%(grand_total)s\n"
+msgstr ""
+"\n"
+"De factuur is nu achterstallig sinds %(due_date)s met een saldo van "
+"%(grand_total)s\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:15
+msgid "We kindly ask that you remit payment as soon as possible"
+msgstr "Wij verzoeken u vriendelijk zo snel mogelijk de betaling over te maken"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:19
+msgid ""
+"We look forward to your swift response. Please contact us if we can be of "
+"any assistance"
+msgstr ""
+"Wij verheugen ons op uw snelle reactie. Neem contact met ons op als we u "
+"kunnen helpen"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:9
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to invoice #%(reference)s that is "
+"currently outstanding\n"
+msgstr ""
+"\n"
+"We nemen contact met u op met betrekking tot factuur #%(reference)s die "
+"momenteel openstaat\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:12
+#, python-format
+msgid ""
+"\n"
+"    This is a friendly reminder that the balance of %(grand_total)s by "
+"%(due_date)s\n"
+msgstr ""
+"\n"
+"Dit is een vriendelijke herinnering dat het saldo van %(grand_total)s voor "
+"%(due_date)s\n"
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:18
+msgid ""
+"If the invoice has already been paid, please disregard this message. We "
+"greatly appreciate your business"
+msgstr ""
+"Negeer dit bericht als de factuur al is betaald. Wij waarderen uw zaken zeer"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:20
+msgid "Total"
+msgstr "Totaal"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:60
+msgid "Bill to"
+msgstr "Rekening naar"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:84
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:107
+msgid "Linetotal"
+msgstr "Lijn totaal"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:106
+msgid "Quantity"
+msgstr "Aantal stuks"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:133
+msgid "Tax"
+msgstr "Belasting"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:138
+msgid "Total amount"
+msgstr "Totaalbedrag"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:143
+msgid "Discount"
+msgstr "Korting"
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:148
+msgid "Amount due"
+msgstr "Verschuldigde bedrag"

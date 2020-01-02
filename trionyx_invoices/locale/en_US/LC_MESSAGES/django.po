@@ -1,0 +1,418 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-02 19:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:111
+#: trionyx_invoices/models.py:112
+msgid "Invoices"
+msgstr ""
+
+#: trionyx_invoices/apps.py:73
+msgid "Delete"
+msgstr ""
+
+#: trionyx_invoices/apps.py:87 trionyx_invoices/forms.py:251
+msgid "Publish"
+msgstr ""
+
+#: trionyx_invoices/apps.py:101
+msgid "PDF"
+msgstr ""
+
+#: trionyx_invoices/apps.py:108
+msgid "Complete"
+msgstr ""
+
+#: trionyx_invoices/conf.py:13 trionyx_invoices/conf.py:14
+#, python-brace-format
+msgid "Invoice {invoice_id}"
+msgstr ""
+
+#: trionyx_invoices/conf.py:15
+#, python-brace-format
+msgid "Invoice {invoice_id} is past due"
+msgstr ""
+
+#: trionyx_invoices/forms.py:106 trionyx_invoices/layouts.py:43
+msgid "Invoiced to"
+msgstr ""
+
+#: trionyx_invoices/forms.py:126 trionyx_invoices/layouts.py:54
+msgid "Billing address"
+msgstr ""
+
+#: trionyx_invoices/forms.py:151
+msgid "Account"
+msgstr ""
+
+#: trionyx_invoices/forms.py:154
+msgid "Custom"
+msgstr ""
+
+#: trionyx_invoices/forms.py:174 trionyx_invoices/layouts.py:67
+msgid "Hourly items"
+msgstr ""
+
+#: trionyx_invoices/forms.py:178 trionyx_invoices/layouts.py:77
+msgid "Price items"
+msgstr ""
+
+#: trionyx_invoices/forms.py:219
+msgid "Invoice due in days"
+msgstr ""
+
+#: trionyx_invoices/forms.py:247
+msgid "Publish and send invoice to customer"
+msgstr ""
+
+#: trionyx_invoices/forms.py:272
+msgid "Mark invoice as paid"
+msgstr ""
+
+#: trionyx_invoices/forms.py:280
+msgid "Complete invoice"
+msgstr ""
+
+#: trionyx_invoices/forms.py:284
+msgid "Completed"
+msgstr ""
+
+#: trionyx_invoices/layouts.py:25
+msgid "Info"
+msgstr ""
+
+#: trionyx_invoices/layouts.py:33
+msgid "For"
+msgstr ""
+
+#: trionyx_invoices/layouts.py:89
+msgid "Totals"
+msgstr ""
+
+#: trionyx_invoices/layouts.py:98 trionyx_invoices/models.py:96
+#: trionyx_invoices/models.py:359 trionyx_invoices/models.py:364
+msgid "Comment"
+msgstr ""
+
+#: trionyx_invoices/layouts.py:124 trionyx_invoices/models.py:81
+#: trionyx_invoices/models.py:312
+#: trionyx_invoices/templates/widgets/open_invoices.html:13
+msgid "Reference"
+msgstr ""
+
+#: trionyx_invoices/models.py:37
+msgid "Invoice type"
+msgstr ""
+
+#: trionyx_invoices/models.py:38
+msgid "Invoice types"
+msgstr ""
+
+#: trionyx_invoices/models.py:49
+msgid "Draft"
+msgstr ""
+
+#: trionyx_invoices/models.py:50
+msgid "Send"
+msgstr ""
+
+#: trionyx_invoices/models.py:51
+msgid "Overdue"
+msgstr ""
+
+#: trionyx_invoices/models.py:52
+msgid "Paid"
+msgstr ""
+
+#: trionyx_invoices/models.py:53
+msgid "Canceled"
+msgstr ""
+
+#: trionyx_invoices/models.py:64 trionyx_invoices/models.py:307
+msgid "Type"
+msgstr ""
+
+#: trionyx_invoices/models.py:72
+msgid "Object type"
+msgstr ""
+
+#: trionyx_invoices/models.py:74
+msgid "Object ID"
+msgstr ""
+
+#: trionyx_invoices/models.py:80
+#: trionyx_invoices/templates/widgets/open_invoices.html:14
+msgid "Status"
+msgstr ""
+
+#: trionyx_invoices/models.py:82
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:21
+#: trionyx_invoices/templates/widgets/open_invoices.html:12
+msgid "Due date"
+msgstr ""
+
+#: trionyx_invoices/models.py:84
+msgid "Send on"
+msgstr ""
+
+#: trionyx_invoices/models.py:85
+msgid "Reminder send on"
+msgstr ""
+
+#: trionyx_invoices/models.py:86
+msgid "Past due send on"
+msgstr ""
+
+#: trionyx_invoices/models.py:88
+msgid "Discount total"
+msgstr ""
+
+#: trionyx_invoices/models.py:89
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:128
+msgid "Subtotal"
+msgstr ""
+
+#: trionyx_invoices/models.py:90
+msgid "Tax percentage"
+msgstr ""
+
+#: trionyx_invoices/models.py:91
+msgid "Tax total"
+msgstr ""
+
+#: trionyx_invoices/models.py:92
+#: trionyx_invoices/templates/widgets/open_invoices.html:15
+msgid "Grand total"
+msgstr ""
+
+#: trionyx_invoices/models.py:99
+#: trionyx_invoices/templates/widgets/open_invoices.html:16
+msgid "Name"
+msgstr ""
+
+#: trionyx_invoices/models.py:100
+msgid "Company name"
+msgstr ""
+
+#: trionyx_invoices/models.py:101
+msgid "Email"
+msgstr ""
+
+#: trionyx_invoices/models.py:102
+msgid "Telephone"
+msgstr ""
+
+#: trionyx_invoices/models.py:103
+msgid "Address"
+msgstr ""
+
+#: trionyx_invoices/models.py:104
+msgid "Postcode"
+msgstr ""
+
+#: trionyx_invoices/models.py:105
+msgid "City"
+msgstr ""
+
+#: trionyx_invoices/models.py:106
+msgid "Country"
+msgstr ""
+
+#: trionyx_invoices/models.py:111 trionyx_invoices/models.py:306
+#: trionyx_invoices/models.py:356
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:8
+msgid "Invoice"
+msgstr ""
+
+#: trionyx_invoices/models.py:282
+#, python-brace-format
+msgid "Publishing invoice #{self.reference}"
+msgstr ""
+
+#: trionyx_invoices/models.py:302 trionyx_invoices/models.py:316
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:82
+msgid "Hourly rate"
+msgstr ""
+
+#: trionyx_invoices/models.py:303 trionyx_invoices/models.py:319
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:105
+msgid "Price"
+msgstr ""
+
+#: trionyx_invoices/models.py:313
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:81
+msgid "Description"
+msgstr ""
+
+#: trionyx_invoices/models.py:314
+msgid "Order"
+msgstr ""
+
+#: trionyx_invoices/models.py:317
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:83
+msgid "Hours"
+msgstr ""
+
+#: trionyx_invoices/models.py:320
+msgid "Qty"
+msgstr ""
+
+#: trionyx_invoices/models.py:322
+msgid "Row total"
+msgstr ""
+
+#: trionyx_invoices/models.py:327
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:104
+msgid "Item"
+msgstr ""
+
+#: trionyx_invoices/models.py:328
+msgid "Items"
+msgstr ""
+
+#: trionyx_invoices/models.py:357
+msgid "Is public"
+msgstr ""
+
+#: trionyx_invoices/models.py:358
+msgid "Is send"
+msgstr ""
+
+#: trionyx_invoices/models.py:365
+msgid "Comments"
+msgstr ""
+
+#: trionyx_invoices/tasks.py:20
+msgid "Creating invoice PDF"
+msgstr ""
+
+#: trionyx_invoices/tasks.py:24
+msgid "Sending invoice"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:2
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:2
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:2
+msgid "Dear"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:10
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to a new invoice #%(reference)s that has "
+"been created on your account\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:13
+#, python-format
+msgid ""
+"\n"
+"    You may find the invoice attached. Please pay the balance of "
+"%(grand_total)s by %(due_date)s\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:19
+msgid "We look forward to conducting future business with you"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice.html:21
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:21
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:20
+msgid "Kind Regards"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:9
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to invoice #%(reference)s\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:12
+#, python-format
+msgid ""
+"\n"
+"    The invoice is now past due since %(due_date)s with a balance of "
+"%(grand_total)s\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:15
+msgid "We kindly ask that you remit payment as soon as possible"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_past_due.html:19
+msgid ""
+"We look forward to your swift response. Please contact us if we can be of "
+"any assistance"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:9
+#, python-format
+msgid ""
+"\n"
+"    We are contacting you in regard to invoice #%(reference)s that is "
+"currently outstanding\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:12
+#, python-format
+msgid ""
+"\n"
+"    This is a friendly reminder that the balance of %(grand_total)s by "
+"%(due_date)s\n"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/emails/invoice_reminder.html:18
+msgid ""
+"If the invoice has already been paid, please disregard this message. We "
+"greatly appreciate your business"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:20
+msgid "Total"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:60
+msgid "Bill to"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:84
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:107
+msgid "Linetotal"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:106
+msgid "Quantity"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:133
+msgid "Tax"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:138
+msgid "Total amount"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:143
+msgid "Discount"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:148
+msgid "Amount due"
+msgstr ""
