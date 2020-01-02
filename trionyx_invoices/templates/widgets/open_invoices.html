@@ -1,0 +1,42 @@
+{% load i18n %}
+<script type="text/x-template" id="widget-open_invoices-template">
+    <div :class="widgetClass" style="height: 100%">
+        <div class="box-header with-border">
+            <h3 class="box-title">[[widget.config.title]]</h3>
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+                  <tr>
+                      <th style="width: 70px; white-space: nowrap;">{% trans "Due date" %}</th>
+                      <th style="width: 60px; white-space: nowrap;">{% trans "Reference" %}</th>
+                      <th style="width: 60px; white-space: nowrap;">{% trans "Status" %}</th>
+                      <th style="width: 80px; white-space: nowrap;">{% trans "Grand total" %}</th>
+                      <th>{% trans "Name" %}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr v-for="item in data">
+                      <td>[[item.due_date]]</td>
+                      <td>
+                          <a v-bind:href="item.url">[[item.reference]]</a>
+                      </td>
+                      <td v-html="item.status"></td>
+                      <td>[[item.grand_total]]</td>
+                      <td>[[item.billing_company_name]]</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+</script>
+
+
+<script>
+    Vue.component('widget-open_invoices', {
+        mixins: [TxWidgetMixin],
+        template: '#widget-open_invoices-template',
+    });
+</script>
