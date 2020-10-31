@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy
 from weasyprint import HTML, CSS
 
 from .conf import settings as app_settings
@@ -78,7 +79,7 @@ class Invoice(models.BaseModel):
     auto_generate_id = models.CharField(max_length=32, null=True, blank=True)
     """Unique id used for generating the Invoice, that later can be used to update the same order"""
 
-    status = models.IntegerField(_('Status'), choices=STATUS_CHOICES, default=STATUS_DRAFT)
+    status = models.IntegerField(pgettext_lazy('invoice', 'Status'), choices=STATUS_CHOICES, default=STATUS_DRAFT)
     reference = models.CharField(_('Reference'), max_length=32, blank=True, null=True)
     due_date = models.DateField(_('Due date'), null=True, blank=True)
 
@@ -305,7 +306,7 @@ class InvoiceItem(models.BaseModel):
 
     reference = models.CharField(_('Reference'), max_length=32, null=True, blank=True)
     description = models.TextField(_('Description'), null=True, blank=True)
-    order = models.PositiveIntegerField(_('Order'), null=True, blank=True)
+    order = models.PositiveIntegerField(pgettext_lazy('sort order', 'Order'), null=True, blank=True)
 
     hourly_rate = models.PriceField(_('Hourly rate'), default=0.0, blank=True)
     hours = models.DecimalField(_('Hours'), max_digits=19, decimal_places=2, default=0.0, blank=True)
@@ -352,7 +353,7 @@ class InvoicePage(models.BaseModel):
     auto_generate_id = models.CharField(max_length=32, null=True, blank=True)
     """Unique id used for generating the InvoicePage, that later can be used to update the same InvoicePage"""
 
-    order = models.PositiveIntegerField(_('Order'), null=True, blank=True)
+    order = models.PositiveIntegerField(pgettext_lazy('sort order', 'Order'), null=True, blank=True)
     content = models.TextField(_('Content'))
 
     class Meta:

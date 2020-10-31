@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-02 19:33+0000\n"
-"PO-Revision-Date: 2020-01-02 21:01+0100\n"
+"POT-Creation-Date: 2020-10-31 11:29+0000\n"
+"PO-Revision-Date: 2020-10-31 12:35+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:111
-#: trionyx_invoices/models.py:112
+#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:120
+#: trionyx_invoices/layouts.py:125 trionyx_invoices/models.py:114
 msgid "Invoices"
 msgstr "Facturen"
 
-#: trionyx_invoices/apps.py:73
+#: trionyx_invoices/apps.py:74
 msgid "Delete"
 msgstr "Verwijder"
 
-#: trionyx_invoices/apps.py:87 trionyx_invoices/forms.py:251
+#: trionyx_invoices/apps.py:88 trionyx_invoices/forms.py:256
 msgid "Publish"
 msgstr "Publiceren"
 
-#: trionyx_invoices/apps.py:101
+#: trionyx_invoices/apps.py:102
 msgid "PDF"
 msgstr "PDF"
 
-#: trionyx_invoices/apps.py:108
+#: trionyx_invoices/apps.py:109
 msgid "Complete"
 msgstr "Voltooi"
 
@@ -49,47 +49,53 @@ msgstr "Factuur {invoice_id}"
 msgid "Invoice {invoice_id} is past due"
 msgstr "Factuur {invoice_id} is te laat"
 
-#: trionyx_invoices/forms.py:106 trionyx_invoices/layouts.py:43
+#: trionyx_invoices/forms.py:111 trionyx_invoices/layouts.py:43
 msgid "Invoiced to"
 msgstr "Gefactureerd aan"
 
-#: trionyx_invoices/forms.py:126 trionyx_invoices/layouts.py:54
+#: trionyx_invoices/forms.py:131 trionyx_invoices/layouts.py:54
 msgid "Billing address"
 msgstr "Factuur adres"
 
-#: trionyx_invoices/forms.py:151
+#: trionyx_invoices/forms.py:156
 msgid "Account"
 msgstr "Account"
 
-#: trionyx_invoices/forms.py:154
+#: trionyx_invoices/forms.py:159
 msgid "Custom"
 msgstr "Met de hand"
 
-#: trionyx_invoices/forms.py:174 trionyx_invoices/layouts.py:67
+#: trionyx_invoices/forms.py:179 trionyx_invoices/layouts.py:67
 msgid "Hourly items"
 msgstr "Uur items"
 
-#: trionyx_invoices/forms.py:178 trionyx_invoices/layouts.py:77
+#: trionyx_invoices/forms.py:183 trionyx_invoices/layouts.py:77
 msgid "Price items"
 msgstr "Prijs items"
 
-#: trionyx_invoices/forms.py:219
+#: trionyx_invoices/forms.py:224
 msgid "Invoice due in days"
 msgstr "Factuur verschuldigd in dagen"
 
-#: trionyx_invoices/forms.py:247
+#: trionyx_invoices/forms.py:252
 msgid "Publish and send invoice to customer"
 msgstr "Publiceer en verzend factuur naar klant"
 
-#: trionyx_invoices/forms.py:272
+#: trionyx_invoices/forms.py:262
+#, fuzzy, python-brace-format
+#| msgid "Publishing invoice #{self.reference}"
+msgid "Publishing invoice #{obj.reference}"
+msgstr "Publicatie factuur #{self.reference}"
+
+#: trionyx_invoices/forms.py:285
 msgid "Mark invoice as paid"
 msgstr "Markeer factuur als betaald"
 
-#: trionyx_invoices/forms.py:280
+#: trionyx_invoices/forms.py:293
 msgid "Complete invoice"
 msgstr "Factuur voltooien"
 
-#: trionyx_invoices/forms.py:284
+#: trionyx_invoices/forms.py:297
 msgid "Completed"
 msgstr "Voltooid"
 
@@ -105,196 +111,208 @@ msgstr "Voor"
 msgid "Totals"
 msgstr "Totalen"
 
-#: trionyx_invoices/layouts.py:98 trionyx_invoices/models.py:96
-#: trionyx_invoices/models.py:359 trionyx_invoices/models.py:364
+#: trionyx_invoices/layouts.py:98 trionyx_invoices/models.py:98
+#: trionyx_invoices/models.py:370 trionyx_invoices/models.py:375
 msgid "Comment"
 msgstr "Opmerking"
 
-#: trionyx_invoices/layouts.py:124 trionyx_invoices/models.py:81
-#: trionyx_invoices/models.py:312
+#: trionyx_invoices/layouts.py:107 trionyx_invoices/models.py:363
+msgid "Pages"
+msgstr "Pagina's"
+
+#: trionyx_invoices/layouts.py:112 trionyx_invoices/models.py:362
+msgid "Page"
+msgstr "Pagina"
+
+#: trionyx_invoices/layouts.py:138 trionyx_invoices/models.py:83
+#: trionyx_invoices/models.py:307
 #: trionyx_invoices/templates/widgets/open_invoices.html:13
 msgid "Reference"
 msgstr "Referentie"
 
-#: trionyx_invoices/models.py:37
+#: trionyx_invoices/models.py:39
 msgid "Invoice type"
 msgstr "Factuurtype"
 
-#: trionyx_invoices/models.py:38
+#: trionyx_invoices/models.py:40
 msgid "Invoice types"
 msgstr "Typen facturen"
 
-#: trionyx_invoices/models.py:49
+#: trionyx_invoices/models.py:51
 msgid "Draft"
 msgstr "Ontwerp"
 
-#: trionyx_invoices/models.py:50
+#: trionyx_invoices/models.py:52
 msgid "Send"
 msgstr "Verzonden"
 
-#: trionyx_invoices/models.py:51
+#: trionyx_invoices/models.py:53
 msgid "Overdue"
 msgstr "Achterstallig"
 
-#: trionyx_invoices/models.py:52
+#: trionyx_invoices/models.py:54
 msgid "Paid"
 msgstr "Betaald"
 
-#: trionyx_invoices/models.py:53
+#: trionyx_invoices/models.py:55
 msgid "Canceled"
 msgstr "Geannuleerd"
 
-#: trionyx_invoices/models.py:64 trionyx_invoices/models.py:307
+#: trionyx_invoices/models.py:66 trionyx_invoices/models.py:302
 msgid "Type"
 msgstr "Type"
 
-#: trionyx_invoices/models.py:72
+#: trionyx_invoices/models.py:74
 msgid "Object type"
 msgstr "Object type"
 
-#: trionyx_invoices/models.py:74
+#: trionyx_invoices/models.py:76
 msgid "Object ID"
 msgstr "Object ID"
 
-#: trionyx_invoices/models.py:80
-#: trionyx_invoices/templates/widgets/open_invoices.html:14
-msgid "Status"
-msgstr "Staat"
-
 #: trionyx_invoices/models.py:82
+#, fuzzy
+#| msgid "Status"
+msgctxt "invoice"
+msgid "Status"
+msgstr "Status"
+
+#: trionyx_invoices/models.py:84
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:21
 #: trionyx_invoices/templates/widgets/open_invoices.html:12
 msgid "Due date"
 msgstr "Opleveringsdatum"
 
-#: trionyx_invoices/models.py:84
+#: trionyx_invoices/models.py:86
 msgid "Send on"
 msgstr "Verzonden op"
 
-#: trionyx_invoices/models.py:85
+#: trionyx_invoices/models.py:87
 msgid "Reminder send on"
 msgstr "Herinnering verzonden op"
 
-#: trionyx_invoices/models.py:86
+#: trionyx_invoices/models.py:88
 msgid "Past due send on"
 msgstr "Achterstallig verzenden op"
 
-#: trionyx_invoices/models.py:88
+#: trionyx_invoices/models.py:90
 msgid "Discount total"
 msgstr "Totaal korting"
 
-#: trionyx_invoices/models.py:89
+#: trionyx_invoices/models.py:91
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:128
 msgid "Subtotal"
 msgstr "Subtotaal"
 
-#: trionyx_invoices/models.py:90
+#: trionyx_invoices/models.py:92
 msgid "Tax percentage"
 msgstr "Belastingpercentage"
 
-#: trionyx_invoices/models.py:91
+#: trionyx_invoices/models.py:93
 msgid "Tax total"
 msgstr "Totaal belasting"
 
-#: trionyx_invoices/models.py:92
+#: trionyx_invoices/models.py:94
 #: trionyx_invoices/templates/widgets/open_invoices.html:15
 msgid "Grand total"
 msgstr "Eindtotaal"
 
-#: trionyx_invoices/models.py:99
+#: trionyx_invoices/models.py:101
 #: trionyx_invoices/templates/widgets/open_invoices.html:16
 msgid "Name"
 msgstr "Naam"
 
-#: trionyx_invoices/models.py:100
+#: trionyx_invoices/models.py:102
 msgid "Company name"
 msgstr "Bedrijfsnaam"
 
-#: trionyx_invoices/models.py:101
+#: trionyx_invoices/models.py:103
 msgid "Email"
 msgstr "Email"
 
-#: trionyx_invoices/models.py:102
+#: trionyx_invoices/models.py:104
 msgid "Telephone"
 msgstr "Telefoon"
 
-#: trionyx_invoices/models.py:103
+#: trionyx_invoices/models.py:105
 msgid "Address"
 msgstr "Adres"
 
-#: trionyx_invoices/models.py:104
+#: trionyx_invoices/models.py:106
 msgid "Postcode"
 msgstr "Postcode"
 
-#: trionyx_invoices/models.py:105
+#: trionyx_invoices/models.py:107
 msgid "City"
 msgstr "Stad"
 
-#: trionyx_invoices/models.py:106
+#: trionyx_invoices/models.py:108
 msgid "Country"
 msgstr "Land"
 
-#: trionyx_invoices/models.py:111 trionyx_invoices/models.py:306
-#: trionyx_invoices/models.py:356
+#: trionyx_invoices/models.py:113 trionyx_invoices/models.py:301
+#: trionyx_invoices/models.py:351 trionyx_invoices/models.py:367
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:8
 msgid "Invoice"
 msgstr "Factuur"
 
-#: trionyx_invoices/models.py:282
-#, python-brace-format
-msgid "Publishing invoice #{self.reference}"
-msgstr "Publicatie factuur #{self.reference}"
-
-#: trionyx_invoices/models.py:302 trionyx_invoices/models.py:316
+#: trionyx_invoices/models.py:297 trionyx_invoices/models.py:311
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:82
 msgid "Hourly rate"
 msgstr "Uurtarief"
 
-#: trionyx_invoices/models.py:303 trionyx_invoices/models.py:319
+#: trionyx_invoices/models.py:298 trionyx_invoices/models.py:314
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:105
 msgid "Price"
 msgstr "Prijs"
 
-#: trionyx_invoices/models.py:313
+#: trionyx_invoices/models.py:308
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:81
 msgid "Description"
 msgstr "Beschrijving"
 
-#: trionyx_invoices/models.py:314
+#: trionyx_invoices/models.py:309 trionyx_invoices/models.py:356
+#, fuzzy
+#| msgid "Order"
+msgctxt "sort order"
 msgid "Order"
 msgstr "Volgorde"
 
-#: trionyx_invoices/models.py:317
+#: trionyx_invoices/models.py:312
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:83
 msgid "Hours"
 msgstr "Uren"
 
-#: trionyx_invoices/models.py:320
+#: trionyx_invoices/models.py:315
 msgid "Qty"
 msgstr "Aantal"
 
-#: trionyx_invoices/models.py:322
+#: trionyx_invoices/models.py:317
 msgid "Row total"
 msgstr "Rij totaal"
 
-#: trionyx_invoices/models.py:327
+#: trionyx_invoices/models.py:322
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:104
 msgid "Item"
 msgstr "Item"
 
-#: trionyx_invoices/models.py:328
+#: trionyx_invoices/models.py:323
 msgid "Items"
 msgstr "Items"
 
 #: trionyx_invoices/models.py:357
+msgid "Content"
+msgstr "Inhoud"
+
+#: trionyx_invoices/models.py:368
 msgid "Is public"
 msgstr "Is openbaar"
 
-#: trionyx_invoices/models.py:358
+#: trionyx_invoices/models.py:369
 msgid "Is send"
 msgstr "Is verzonden"
 
-#: trionyx_invoices/models.py:365
+#: trionyx_invoices/models.py:376
 msgid "Comments"
 msgstr "Opmerkingen"
 
@@ -437,3 +455,7 @@ msgstr "Korting"
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:148
 msgid "Amount due"
 msgstr "Verschuldigde bedrag"
+
+#: trionyx_invoices/templates/widgets/open_invoices.html:14
+msgid "Status"
+msgstr "Staat"
