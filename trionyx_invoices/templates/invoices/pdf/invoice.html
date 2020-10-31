@@ -149,6 +149,12 @@
             <td class="due-amount-border right text-bold">{{ invoice.grand_total|price }}</td>
         </tr>
     </table>
+
+    {% for page in pages %}
+        <div style="page-break-before:always">
+            {{ page.content|safe }}
+        </div>
+    {% endfor %}
 </body>
 <footer>
     {{ footer }}

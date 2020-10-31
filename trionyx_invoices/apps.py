@@ -29,13 +29,13 @@ def render_status(model, *args, **kwargs):
 def get_publish_url(obj, context):
     """Get publish url"""
     from trionyx.urls import model_url
-    return model_url(obj, 'dialog-edit-custom', code='publish')
+    return model_url(obj, 'dialog-edit', code='publish')
 
 
 def get_complete_url(obj, context):
     """Get publish url"""
     from trionyx.urls import model_url
-    return model_url(obj, 'dialog-edit-custom', code='complete')
+    return model_url(obj, 'dialog-edit', code='complete')
 
 
 class InvoicesConfig(BaseConfig):
@@ -46,7 +46,7 @@ class InvoicesConfig(BaseConfig):
 
     class Invoice(ModelConfig):
         menu_root = True
-        menu_icon = 'fa fa-money'
+        menu_icon = 'fa fa-file-text-o'
         menu_order = 80
         verbose_name = '{reference}'
 
@@ -131,6 +131,11 @@ class InvoicesConfig(BaseConfig):
         disable_search_index = True
 
     class InvoiceComment(ModelConfig):
+        menu_exclude = True
+        disable_search_index = True
+        auditlog_disable = True
+
+    class InvoicePage(ModelConfig):
         menu_exclude = True
         disable_search_index = True
         auditlog_disable = True

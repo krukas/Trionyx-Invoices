@@ -14,6 +14,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Invoice, InvoiceItem
+from .tasks import InvoicePublishTask
 from .conf import settings
 
 
@@ -249,6 +250,14 @@ class PublishInvoice(forms.ModelForm):
     def get_submit_label(self):
         """Get submit label"""
         return _('Publish')
+
+    def save(self, *args, **kwargs):
+        obj = super().save(*args, **kwargs)
+        InvoicePublishTask().delay(
+            task_object=obj,
+            task_description=_(f'Publishing invoice #{obj.reference}')
+        )
+        return obj
 
 
 @forms.register(code='complete')

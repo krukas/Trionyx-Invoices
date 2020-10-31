@@ -1,4 +1,5 @@
 import logging
+import uuid
 from decimal import Decimal
 
 from trionyx import models
@@ -22,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 def pdf_upload_path(instance, filename):
     """Generate upload path"""
-    return f'invoices/{instance.reference}.pdf'
+    return f'invoices/{uuid.uuid4()}.pdf'
 
 
 class InvoiceType(models.BaseModel):
@@ -141,7 +142,7 @@ class Invoice(models.BaseModel):
             row_total=models.Sum('row_total'),
         )
         self.subtotal = Decimal(results['row_total']) if results['row_total'] else Decimal()
-        self.tax_total = self.subtotal * Decimal(self.tax_percentage / 100)
+        self.tax_total = self.subtotal * Decimal(self.tax_percentage / 100) if self.subtotal > 0 else Decimal(0)
         self.grand_total = (self.subtotal - self.discount_total) + self.tax_total
 
     def create_pdf(self):
@@ -188,6 +189,7 @@ class Invoice(models.BaseModel):
                 'website': settings.TX_COMPANY_WEBSITE,
                 'email': settings.TX_COMPANY_EMAIL,
             },
+            'pages': self.pages.order_by('order'),
             'footer': app_settings.PDF_FOOTER,
         }))
 
@@ -275,20 +277,13 @@ class Invoice(models.BaseModel):
         else:
             super().save(*args, **kwargs)
 
-        if self.__original_status == self.STATUS_DRAFT and self.status == self.STATUS_SEND:
-            from .tasks import InvoicePublishTask
-            InvoicePublishTask().delay(
-                task_object=self,
-                task_description=_(f'Publishing invoice #{self.reference}')
-            )
-
 
     def get_absolute_url(self):
         """Get absolute url, in Draft returns edit form"""
         if self.status == self.STATUS_DRAFT:
             from trionyx.urls import model_url
             url = model_url(self, 'edit')
-            if get_current_request().path == url:
+            if get_current_request() and get_current_request().path == url:
                 return model_url(self, 'list')
             return url
         return super().get_absolute_url()
@@ -329,10 +324,10 @@ class InvoiceItem(models.BaseModel):
 
     def collect_totals(self):
         """Collect item totals"""
-        self.price = Decimal(self.price if self.price else 0.0)
+        self.price = Decimal(self.price if self.price else 0)
         self.qty = Decimal(self.qty if self.qty else 0)
-        self.hourly_rate = Decimal(self.hourly_rate if self.hourly_rate else 0.0)
-        self.hours = Decimal(self.hours if self.hours else 0.0)
+        self.hourly_rate = Decimal(self.hourly_rate if self.hourly_rate else 0)
+        self.hours = Decimal(self.hours if self.hours else 0)
 
         if self.type == self.TYPE_PRICE:
             self.row_total = self.price * self.qty
@@ -350,6 +345,22 @@ class InvoiceItem(models.BaseModel):
                 self.invoice.save()
             except Exception as e:
                 logger.exception(e)
+
+
+class InvoicePage(models.BaseModel):
+    invoice = models.ForeignKey(Invoice, models.CASCADE, related_name='pages', verbose_name=_('Invoice'))
+
+    auto_generate_id = models.CharField(max_length=32, null=True, blank=True)
+    """Unique id used for generating the InvoicePage, that later can be used to update the same InvoicePage"""
+
+    order = models.PositiveIntegerField(_('Order'), null=True, blank=True)
+    content = models.TextField(_('Content'))
+
+    class Meta:
+        """Model meta"""
+
+        verbose_name = _('Page')
+        verbose_name_plural = _('Pages')
 
 
 class InvoiceComment(models.BaseModel):

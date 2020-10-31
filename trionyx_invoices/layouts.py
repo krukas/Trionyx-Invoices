@@ -16,8 +16,8 @@ from .models import Invoice, InvoiceItem
 @tabs.register(Invoice)
 def invoice_general(obj):
     from .apps import render_status
-    hourly_items = obj.items.filter(type=InvoiceItem.TYPE_HOURLY_RATE)
-    price_items = obj.items.filter(type=InvoiceItem.TYPE_PRICE)
+    hourly_items = obj.items.filter(type=InvoiceItem.TYPE_HOURLY_RATE).order_by('order')
+    price_items = obj.items.filter(type=InvoiceItem.TYPE_PRICE).order_by('order')
     return Container(
         Row(
             Column4(
@@ -103,7 +103,21 @@ def invoice_general(obj):
         )
     )
 
-@tabs.register('trionyx_accounts.account', code='invoices', order=20)
+
+@tabs.register(Invoice, code='pages', name=_('Pages'), order=20)
+def invoice_pages(obj):
+    return Column12(
+        *[
+            Panel(
+                _('Page'),
+                Html(page.content),
+                collapse=False
+            ) for page in obj.pages.order_by('order')
+        ]
+    )
+
+
+@tabs.register('trionyx_accounts.account', code='invoices', name=_('Invoices'), order=20)
 def account_invoices(obj):
     from .apps import render_status
     return Column12(
