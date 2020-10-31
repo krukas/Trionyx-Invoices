@@ -97,7 +97,7 @@ def invoice_general(obj):
                 Panel(
                     _('Comment'),
                     Html(obj.comment),
-                    collapse = False
+                    collapse=False
                 ),
             )
         )

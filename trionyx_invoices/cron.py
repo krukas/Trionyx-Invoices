@@ -1,5 +1,6 @@
 from celery.schedules import crontab
 
+
 schedule = {
     'invoice-overdue': {
         'task': 'trionyx_invoices.tasks.mark_overdue_invoices',

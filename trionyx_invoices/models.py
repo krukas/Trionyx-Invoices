@@ -277,7 +277,6 @@ class Invoice(models.BaseModel):
         else:
             super().save(*args, **kwargs)
 
-
     def get_absolute_url(self):
         """Get absolute url, in Draft returns edit form"""
         if self.status == self.STATUS_DRAFT:

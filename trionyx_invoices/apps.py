@@ -78,7 +78,7 @@ class InvoicesConfig(BaseConfig):
                 'dialog_options': {
                     'callback': """function(data, dialog){
                         if (data.success) {
-                            dialog.close();   
+                            dialog.close();
                             window.location.href = '/model/trionyx_invoices/invoice/';
                         }
                     }"""
@@ -93,9 +93,9 @@ class InvoicesConfig(BaseConfig):
                     'callback': """function(data, dialog){
                         if (data.success) {
                             window.location.href = String(dialog.url).replace(/^\/dialog|edit\/publish\/$/g, '');
-                            dialog.close();   
+                            dialog.close();
                         }
-                    }"""
+                    }"""  # noqa: W605
                 }
             },
             {

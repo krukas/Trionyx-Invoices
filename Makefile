@@ -45,8 +45,8 @@ shell:
 
 
 lint:
-	-$(FLAKE8) trionyx_accounts
-	-$(PYDOCSTYLE) trionyx_accounts
+	-$(FLAKE8) trionyx_invoices
+#	-$(PYDOCSTYLE) trionyx_invoices
 
 
 

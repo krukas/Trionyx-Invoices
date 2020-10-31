@@ -41,9 +41,11 @@ class InvoiceItemPriceForm(forms.ModelForm):
 
         return item
 
+
 InvoiceItemPriceFormSet = inlineformset_factory(
     Invoice, InvoiceItem, form=InvoiceItemPriceForm, can_delete=True, extra=0
 )
+
 
 class InvoiceItemHourlyForm(forms.ModelForm):
     description = forms.CharField()
@@ -69,9 +71,11 @@ class InvoiceItemHourlyForm(forms.ModelForm):
 
         return item
 
+
 InvoiceItemHourlyFormSet = inlineformset_factory(
     Invoice, InvoiceItem, form=InvoiceItemHourlyForm, can_delete=True, extra=0
 )
+
 
 @forms.register(default_create=True, default_edit=True)
 class InvoiceForm(forms.ModelForm):
