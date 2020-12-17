@@ -142,8 +142,13 @@ class Invoice(models.BaseModel):
         results = self.items.aggregate(
             row_total=models.Sum('row_total'),
         )
+        tax_results = self.items.filter(row_total__gt=0).aggregate(
+            row_total=models.Sum('row_total'),
+        )
+
+        taxable_row_total = Decimal(tax_results['row_total']) if tax_results['row_total'] else Decimal()
         self.subtotal = Decimal(results['row_total']) if results['row_total'] else Decimal()
-        self.tax_total = self.subtotal * Decimal(self.tax_percentage / 100) if self.subtotal > 0 else Decimal(0)
+        self.tax_total = taxable_row_total * Decimal(self.tax_percentage / 100) if taxable_row_total > 0 else Decimal(0)
         self.grand_total = (self.subtotal - self.discount_total) + self.tax_total
 
     def create_pdf(self):
