@@ -138,11 +138,24 @@
             <td class="text-bold left">{% trans 'Total amount' %}:</td>
             <td class="right text-bold">{{ invoice.subtotal_incl_tax|price }}</td>
         </tr>
-        <tr>
-            <td class="totals-border"></td>
-            <td class="totals-border text-muted text-bold left">{% trans 'Discount' %}:</td>
-            <td class="totals-border right text-muted text-bold">{{ invoice.negative_discount|price }}</td>
-        </tr>
+        {% if invoice.payments_received %}
+            <tr>
+                <td></td>
+                <td class="text-muted text-bold left">{% trans 'Discount' %}:</td>
+                <td class="right text-muted text-bold">{{ invoice.negative_discount|price }}</td>
+            </tr>
+            <tr>
+                <td class="totals-border"></td>
+                <td class="totals-border text-bold left">{% trans 'Settled with payments received' %}:</td>
+                <td class="totals-border right text-bold">{{ invoice.payments_received|price }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="totals-border"></td>
+                <td class="totals-border text-muted text-bold left">{% trans 'Discount' %}:</td>
+                <td class="totals-border right text-muted text-bold">{{ invoice.negative_discount|price }}</td>
+            </tr>
+        {% endif %}
         <tr>
             <td></td>
             <td class="due-amount-border text-bold left">{% trans 'Amount due' %}:</td>

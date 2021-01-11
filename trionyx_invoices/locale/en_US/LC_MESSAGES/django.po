@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-31 11:29+0000\n"
+"POT-Creation-Date: 2021-01-11 10:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:120
-#: trionyx_invoices/layouts.py:125 trionyx_invoices/models.py:114
+#: trionyx_invoices/apps.py:45 trionyx_invoices/layouts.py:121
+#: trionyx_invoices/layouts.py:126 trionyx_invoices/models.py:115
 msgid "Invoices"
 msgstr ""
 
@@ -109,21 +109,21 @@ msgstr ""
 msgid "Totals"
 msgstr ""
 
-#: trionyx_invoices/layouts.py:98 trionyx_invoices/models.py:98
-#: trionyx_invoices/models.py:370 trionyx_invoices/models.py:375
+#: trionyx_invoices/layouts.py:99 trionyx_invoices/models.py:99
+#: trionyx_invoices/models.py:376 trionyx_invoices/models.py:381
 msgid "Comment"
 msgstr ""
 
-#: trionyx_invoices/layouts.py:107 trionyx_invoices/models.py:363
+#: trionyx_invoices/layouts.py:108 trionyx_invoices/models.py:369
 msgid "Pages"
 msgstr ""
 
-#: trionyx_invoices/layouts.py:112 trionyx_invoices/models.py:362
+#: trionyx_invoices/layouts.py:113 trionyx_invoices/models.py:368
 msgid "Page"
 msgstr ""
 
-#: trionyx_invoices/layouts.py:138 trionyx_invoices/models.py:83
-#: trionyx_invoices/models.py:307
+#: trionyx_invoices/layouts.py:139 trionyx_invoices/models.py:83
+#: trionyx_invoices/models.py:313
 #: trionyx_invoices/templates/widgets/open_invoices.html:13
 msgid "Reference"
 msgstr ""
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Canceled"
 msgstr ""
 
-#: trionyx_invoices/models.py:66 trionyx_invoices/models.py:302
+#: trionyx_invoices/models.py:66 trionyx_invoices/models.py:308
 msgid "Type"
 msgstr ""
 
@@ -209,104 +209,108 @@ msgid "Tax total"
 msgstr ""
 
 #: trionyx_invoices/models.py:94
+msgid "Payments received"
+msgstr ""
+
+#: trionyx_invoices/models.py:95
 #: trionyx_invoices/templates/widgets/open_invoices.html:15
 msgid "Grand total"
 msgstr ""
 
-#: trionyx_invoices/models.py:101
+#: trionyx_invoices/models.py:102
 #: trionyx_invoices/templates/widgets/open_invoices.html:16
 msgid "Name"
 msgstr ""
 
-#: trionyx_invoices/models.py:102
+#: trionyx_invoices/models.py:103
 msgid "Company name"
 msgstr ""
 
-#: trionyx_invoices/models.py:103
+#: trionyx_invoices/models.py:104
 msgid "Email"
 msgstr ""
 
-#: trionyx_invoices/models.py:104
+#: trionyx_invoices/models.py:105
 msgid "Telephone"
 msgstr ""
 
-#: trionyx_invoices/models.py:105
+#: trionyx_invoices/models.py:106
 msgid "Address"
 msgstr ""
 
-#: trionyx_invoices/models.py:106
+#: trionyx_invoices/models.py:107
 msgid "Postcode"
 msgstr ""
 
-#: trionyx_invoices/models.py:107
+#: trionyx_invoices/models.py:108
 msgid "City"
 msgstr ""
 
-#: trionyx_invoices/models.py:108
+#: trionyx_invoices/models.py:109
 msgid "Country"
 msgstr ""
 
-#: trionyx_invoices/models.py:113 trionyx_invoices/models.py:301
-#: trionyx_invoices/models.py:351 trionyx_invoices/models.py:367
+#: trionyx_invoices/models.py:114 trionyx_invoices/models.py:307
+#: trionyx_invoices/models.py:357 trionyx_invoices/models.py:373
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:8
 msgid "Invoice"
 msgstr ""
 
-#: trionyx_invoices/models.py:297 trionyx_invoices/models.py:311
+#: trionyx_invoices/models.py:303 trionyx_invoices/models.py:317
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:82
 msgid "Hourly rate"
 msgstr ""
 
-#: trionyx_invoices/models.py:298 trionyx_invoices/models.py:314
+#: trionyx_invoices/models.py:304 trionyx_invoices/models.py:320
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:105
 msgid "Price"
 msgstr ""
 
-#: trionyx_invoices/models.py:308
+#: trionyx_invoices/models.py:314
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:81
 msgid "Description"
 msgstr ""
 
-#: trionyx_invoices/models.py:309 trionyx_invoices/models.py:356
+#: trionyx_invoices/models.py:315 trionyx_invoices/models.py:362
 msgctxt "sort order"
 msgid "Order"
 msgstr ""
 
-#: trionyx_invoices/models.py:312
+#: trionyx_invoices/models.py:318
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:83
 msgid "Hours"
 msgstr ""
 
-#: trionyx_invoices/models.py:315
+#: trionyx_invoices/models.py:321
 msgid "Qty"
 msgstr ""
 
-#: trionyx_invoices/models.py:317
+#: trionyx_invoices/models.py:323
 msgid "Row total"
 msgstr ""
 
-#: trionyx_invoices/models.py:322
+#: trionyx_invoices/models.py:328
 #: trionyx_invoices/templates/invoices/pdf/invoice.html:104
 msgid "Item"
 msgstr ""
 
-#: trionyx_invoices/models.py:323
+#: trionyx_invoices/models.py:329
 msgid "Items"
 msgstr ""
 
-#: trionyx_invoices/models.py:357
+#: trionyx_invoices/models.py:363
 msgid "Content"
 msgstr ""
 
-#: trionyx_invoices/models.py:368
+#: trionyx_invoices/models.py:374
 msgid "Is public"
 msgstr ""
 
-#: trionyx_invoices/models.py:369
+#: trionyx_invoices/models.py:375
 msgid "Is send"
 msgstr ""
 
-#: trionyx_invoices/models.py:376
+#: trionyx_invoices/models.py:382
 msgid "Comments"
 msgstr ""
 
@@ -422,11 +426,16 @@ msgstr ""
 msgid "Total amount"
 msgstr ""
 
-#: trionyx_invoices/templates/invoices/pdf/invoice.html:143
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:144
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:155
 msgid "Discount"
 msgstr ""
 
-#: trionyx_invoices/templates/invoices/pdf/invoice.html:148
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:149
+msgid "Settled with payments received"
+msgstr ""
+
+#: trionyx_invoices/templates/invoices/pdf/invoice.html:161
 msgid "Amount due"
 msgstr ""
 

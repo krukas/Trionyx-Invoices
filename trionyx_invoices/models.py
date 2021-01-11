@@ -91,6 +91,7 @@ class Invoice(models.BaseModel):
     subtotal = models.PriceField(_('Subtotal'), default=0.0, blank=True)
     tax_percentage = models.PositiveIntegerField(_('Tax percentage'), null=True, blank=True)
     tax_total = models.PriceField(_('Tax total'), default=0.0, blank=True)
+    payments_received = models.PriceField(_('Payments received'), default=0.0, blank=True)
     grand_total = models.PriceField(_('Grand total'), default=0.0, blank=True)
 
     pdf = models.FileField(upload_to=pdf_upload_path, blank=True, null=True, default=None)
@@ -149,7 +150,7 @@ class Invoice(models.BaseModel):
         taxable_row_total = Decimal(tax_results['row_total']) if tax_results['row_total'] else Decimal()
         self.subtotal = Decimal(results['row_total']) if results['row_total'] else Decimal()
         self.tax_total = taxable_row_total * Decimal(self.tax_percentage / 100) if taxable_row_total > 0 else Decimal(0)
-        self.grand_total = (self.subtotal - self.discount_total) + self.tax_total
+        self.grand_total = (self.subtotal - self.discount_total - self.payments_received) + self.tax_total
 
     def create_pdf(self):
         """Create invoice PDF"""

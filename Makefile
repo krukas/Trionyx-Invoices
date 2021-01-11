@@ -1,3 +1,4 @@
+PY_VERSION := python3
 PIP := env/bin/pip
 PY := env/bin/python
 FLAKE8 := env/bin/flake8
@@ -26,7 +27,8 @@ clean:
 
 
 virtualenv: clean
-	virtualenv -p python3 env
+	$(PY_VERSION) -m venv env
+	$(PIP) install --upgrade pip setuptools
 
 
 

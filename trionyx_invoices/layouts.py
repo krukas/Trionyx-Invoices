@@ -91,6 +91,7 @@ def invoice_general(obj):
                         'subtotal',
                         'discount_total',
                         'tax_total',
+                        'payments_received' if obj.payments_received else False,
                         'grand_total',
                     )
                 ),
