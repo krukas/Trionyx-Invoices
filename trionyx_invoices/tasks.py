@@ -46,7 +46,7 @@ def send_reminders():
 def send_past_dues():
     due_date = timezone.now() - timezone.timedelta(days=settings.INVOICE_SEND_DUE_DAYS_AFTER)
     invoices = Invoice.objects.filter(
-        status_in=[Invoice.STATUS_SEND, Invoice.STATUS_OVERDUE],
+        status__in=[Invoice.STATUS_SEND, Invoice.STATUS_OVERDUE],
         send_past_due_date__isnull=True,
         due_date__lte=due_date)
 
