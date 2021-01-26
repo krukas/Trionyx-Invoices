@@ -148,9 +148,10 @@ class Invoice(models.BaseModel):
         )
 
         taxable_row_total = Decimal(tax_results['row_total']) if tax_results['row_total'] else Decimal()
+        payments_received = Decimal(str(self.payments_received)) if self.payments_received else Decimal(0)
         self.subtotal = Decimal(results['row_total']) if results['row_total'] else Decimal()
         self.tax_total = taxable_row_total * Decimal(self.tax_percentage / 100) if taxable_row_total > 0 else Decimal(0)
-        self.grand_total = (self.subtotal - self.discount_total - self.payments_received) + self.tax_total
+        self.grand_total = (self.subtotal - self.discount_total - payments_received) + self.tax_total
 
     def create_pdf(self):
         """Create invoice PDF"""

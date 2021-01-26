@@ -99,7 +99,7 @@ class InvoiceForm(forms.ModelForm):
         fields = [
             'billing_company_name', 'billing_name', 'billing_email', 'billing_telephone',
             'billing_address', 'billing_postcode', 'billing_city', 'billing_country',
-            'discount_total', 'comment',
+            'discount_total', 'payments_received', 'comment',
         ]
 
     def __init__(self, *args, **kwargs):
@@ -187,6 +187,7 @@ class InvoiceForm(forms.ModelForm):
                 ),
                 Div(
                     'discount_total',
+                    'payments_received',
                     'comment',
                     css_class='col-md-4'
                 ),
